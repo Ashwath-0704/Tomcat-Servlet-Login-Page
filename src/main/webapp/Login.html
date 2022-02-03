@@ -3,7 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    <style>
+        error-output {
+            font-size: 12px;
+            font-style: italic;
+            color: red;
+        }
+        #userName {
+            display: inline-grid;
+            padding: 10px;
+        }
+        #password {
+            display: inline-grid;
+        }
+        #submit {
+            padding-left: 10px;
+        }
+        input {
+            cursor: pointer;
+        }
+    </style>
 </head>
     <body>
         <form action="ServletLogin" method="post">
@@ -29,6 +48,14 @@
             if (nameRegex.test(text.value))
                 textError.textContent = "";
             else textError.textContent = "Name is incorrect";
+        });
+        const password = document.querySelector('#pwd');
+        const passwordError = document.querySelector('.password-error');
+        password.addEventListener('input', function() {
+            const pattern_PASSWORD = RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-+(){}_!@#$%^&*., ?]){8,}.*$');
+            if (pattern_PASSWORD.test(password.value))
+                passwordError.textContent = "";
+            else passwordError.textContent = "password must contains (min 8 Characters,1 Upper Case, 1 numeric number,1 Special Character)";
         });
     </script>
     </body>
