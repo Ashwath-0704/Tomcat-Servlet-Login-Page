@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+    <body>
+        <form action="ServletLogin" method="post">
+            <div id="userName">
+                <label>Username:</label>
+                <input type="text" id="text" name="user"><br>
+                <error-output class="text-error" for="text"></error-output>
+            </div>
+            <div id="password">
+                <label>Password:</label>
+                <input type="password" id="pwd" name="pwd"><br>
+                <error-output class="password-error" for="password"></error-output>
+            </div>
+            <div id="submit">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+
+    </body>
+</html>
