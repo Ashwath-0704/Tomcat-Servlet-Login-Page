@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        error-output {
+            font-size: 12px;
+            font-style: italic;
+            color: red;
+        }
+        #userName {
+            display: inline-grid;
+            padding: 10px;
+        }
+        #password {
+            display: inline-grid;
+        }
+        #submit {
+            padding-left: 10px;
+        }
+        input {
+            cursor: pointer;
+        }
+    </style>
+</head>
+    <body>
+        <form action="ServletLogin" method="post">
+            <div id="userName">
+                <label>Username:</label>
+                <input type="text" id="text" name="user"><br>
+                <error-output class="text-error" for="text"></error-output>
+            </div>
+            <div id="password">
+                <label>Password:</label>
+                <input type="password" id="pwd" name="pwd"><br>
+                <error-output class="password-error" for="password"></error-output>
+            </div>
+            <div id="submit">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+    <script>
+        const text = document.querySelector('#text');
+        const textError = document.querySelector('.text-error');
+        text.addEventListener('input', function() {
+            let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
+            if (nameRegex.test(text.value))
+                textError.textContent = "";
+            else textError.textContent = "Name is incorrect";
+        });
+        const password = document.querySelector('#pwd');
+        const passwordError = document.querySelector('.password-error');
+        password.addEventListener('input', function() {
+            const pattern_PASSWORD = RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-+(){}_!@#$%^&*., ?]){8,}.*$');
+            if (pattern_PASSWORD.test(password.value))
+                passwordError.textContent = "";
+            else passwordError.textContent = "password must contains (min 8 Characters,1 Upper Case, 1 numeric number,1 Special Character)";
+        });
+    </script>
+    </body>
+</html>
